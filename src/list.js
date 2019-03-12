@@ -22,11 +22,37 @@ const toString = (list) => {
     if (isEmpty(elements)) {
       return str;
     }
-    return iter(tail(elements), `${head(elements)}, ${str}`);
+    return iter(tail(elements), `${str}${head(elements)} `);
   };
   return iter(list, '');
 };
 
+const has = (value, elements) => {
+  if (isEmpty(elements)) {
+    return false;
+  }
+  if (head(elements) === value) {
+    return true;
+  }
+  return has(value, tail(elements));
+};
+
+const count = (list) => {
+  if (isEmpty(list)) {
+    return 0;
+  }
+
+  const iter = (elements, n) => (isEmpty(elements) ? n : iter(tail(elements), n + 1));
+  return iter(list, 0);
+};
+
+const reverse = (list) => {
+  const iter = (curElements, acc) => (isEmpty(curElements)
+    ? acc
+    : iter(tail(curElements), pairConstructor(head(curElements), acc)));
+  return iter(list, cons());
+};
+
 export {
-  cons, head, tail, isEmpty, toString,
+  cons, head, tail, isEmpty, toString, has, count, reverse,
 };
