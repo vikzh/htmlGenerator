@@ -2,19 +2,19 @@ import {
   cons as consPair, car, cdr,
 } from 'pairs-js'
 import {
-  cons as consList, push,head, tail, isEmpty,
+  cons as consList, push,head, tail, isEmpty, map,
 } from 'lists-js';
 
-export const make = () => consList();
+const make = () => consList();
 
-export const append = (dom, element) => push(element, dom);
+const append = (dom, element) => push(element, dom);
 
-export const node = (tag, content) => consPair(tag, content);
+const node = (tag, content) => consPair(tag, content);
 
-export const name = element => car(element);
-export const value = element => cdr(element);
+const name = element => car(element);
+const value = element => cdr(element);
 
-export const toString = (elements) => {
+const toString = (elements) => {
   if (isEmpty(elements)) {
     return '';
   }
@@ -22,3 +22,9 @@ export const toString = (elements) => {
   const tag = name(element);
   return `${toString(tail(elements))}<${tag}>${value(element)}</${tag}>`;
 };
+
+const mirror = (elements) => {
+  return map(element => node(name(element), value(element).split("").reverse().join("")), elements);
+};
+
+export { make, append, node, name, value, toString, mirror };

@@ -1,5 +1,5 @@
 import {
-  make, toString, value, append, name, node
+  make, toString, value, append, name, node, mirror
 } from '../src';
 
 describe('List', () => {
@@ -32,5 +32,11 @@ describe('List', () => {
     expect(toString(htmlWithOneElement)).toBe('<header>head text</header>');
     const htmlWithTwoElements = append(htmlWithOneElement, node('body', 'body text'));
     expect(toString(htmlWithTwoElements)).toBe('<header>head text</header><body>body text</body>');
+  });
+
+  it ('#mirror', () => {
+    const html = make();
+    const htmlWithOneElement = append(html, node('header', 'head text'));
+    expect(toString(mirror(htmlWithOneElement))).toBe('<header>txet daeh</header>');
   });
 });
