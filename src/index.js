@@ -2,12 +2,12 @@ import {
   cons as consPair, car, cdr,
 } from 'pairs-js'
 import {
-  cons as constList, head, tail, isEmpty,
+  cons as consList, push,head, tail, isEmpty,
 } from 'lists-js';
 
-export const make = () => l();
+export const make = () => consList();
 
-export const append = (dom, element) => consList(element, dom);
+export const append = (dom, element) => push(element, dom);
 
 export const node = (tag, content) => consPair(tag, content);
 
