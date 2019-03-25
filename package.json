@@ -35,6 +35,7 @@
     "eslint-plugin-import": "^2.15.0"
   },
   "dependencies": {
-    "lists-js": "^1.0.0"
+    "lists-js": "^1.0.0",
+    "pairs-js": "^1.0.1"
   }
 }
