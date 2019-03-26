@@ -1,0 +1,2 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/cd9ffa18f8f315e31f0d/maintainability)](https://codeclimate.com/github/vikzh/htmlManipulator/maintainability)[![Test Coverage](https://api.codeclimate.com/v1/badges/cd9ffa18f8f315e31f0d/test_coverage)](https://codeclimate.com/github/vikzh/htmlManipulator/test_coverage)[![Build Status](https://travis-ci.org/vikzh/htmlManipulator.svg?branch=master)](https://travis-ci.org/vikzh/htmlManipulator)
+# Html Manipulator
