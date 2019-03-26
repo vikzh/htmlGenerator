@@ -1,5 +1,5 @@
 import {
-  make, toString, value, append, name, node, mirror
+  make, toString, value, append, name, node, mirror, getTagsByName,
 } from '../src';
 
 describe('List', () => {
@@ -26,7 +26,7 @@ describe('List', () => {
     expect(value(nodeElement)).toBe('text');
   });
 
-  it ('#append', () => {
+  it('#append', () => {
     const html = make();
     const htmlWithOneElement = append(html, node('header', 'head text'));
     expect(toString(htmlWithOneElement)).toBe('<header>head text</header>');
@@ -34,9 +34,18 @@ describe('List', () => {
     expect(toString(htmlWithTwoElements)).toBe('<header>head text</header><body>body text</body>');
   });
 
-  it ('#mirror', () => {
+  it('#mirror', () => {
     const html = make();
     const htmlWithOneElement = append(html, node('header', 'head text'));
     expect(toString(mirror(htmlWithOneElement))).toBe('<header>txet daeh</header>');
+  });
+
+  it('#getTagsByName', () => {
+    let html = make();
+    html = append(html, node('header', 'head text'));
+    html = append(html, node('p', 'paragraph text'));
+    html = append(html, node('p', 'par 2'));
+    const pTags = getTagsByName(html, 'p');
+    expect(toString(pTags)).toBe('<p>paragraph text</p><p>par 2</p>');
   });
 });

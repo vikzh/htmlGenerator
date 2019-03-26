@@ -1,15 +1,16 @@
 plugins:
-  # https://github.com/babel/eslint-plugin-babel
+  - jest
   - babel
 env:
   browser: true
   es6: true
   node: true
-# https://github.com/babel/babel-eslint
+
 parser: babel-eslint
 
 extends:
   - 'airbnb-base'
+  - 'plugin:jest/recommended'
 
 globals:
   Atomics: readonly

@@ -1,8 +1,8 @@
 import {
   cons as consPair, car, cdr,
-} from 'pairs-js'
+} from 'pairs-js';
 import {
-  cons as consList, push,head, tail, isEmpty, map,
+  cons as consList, push, head, tail, isEmpty, map, reduce, reverse,
 } from 'lists-js';
 
 const make = () => consList();
@@ -23,8 +23,14 @@ const toString = (elements) => {
   return `${toString(tail(elements))}<${tag}>${value(element)}</${tag}>`;
 };
 
-const mirror = (elements) => {
-  return map(element => node(name(element), value(element).split("").reverse().join("")), elements);
-};
+const mirror = elements => map(
+  element => node(name(element), value(element).split('').reverse().join('')), elements,
+);
 
-export { make, append, node, name, value, toString, mirror };
+const getTagsByName = (html, tagName) => reverse(
+  reduce((tag, acc) => (name(tag) === tagName ? push(tag, acc) : acc), make(), html),
+);
+
+export {
+  make, append, node, name, value, toString, mirror, getTagsByName,
+};
